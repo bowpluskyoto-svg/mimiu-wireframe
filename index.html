@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美々卯 サイトリニューアル ワイヤーフレーム集 v3 — Bow plus Kyoto</title>
+<style>
+:root{
+  --bk:#1C1A17;--bg:#F0EBE0;--bgl:#FAF7F2;--img:#D9D3C7;--img2:#C8C2B6;
+  --yw:#D4B82A;--ywl:#F5EBC0;--gr:#8A8580;--bd:#C8C2B6;--wh:#FDFCFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;background:#E8E4DC;color:var(--bk)}
+
+/* ===== COVER ===== */
+.cover{background:var(--bk);color:var(--wh);padding:48px 40px;margin-bottom:0;page-break-after:always}
+.cover-label{font-size:10px;letter-spacing:.22em;color:var(--yw);margin-bottom:20px}
+.cover-title{font-size:28px;letter-spacing:.08em;line-height:1.4;margin-bottom:8px}
+.cover-sub{font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.1em;margin-bottom:32px}
+.cover-meta{font-size:10px;color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.12);padding-top:16px;line-height:2}
+.cover-toc{margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cover-toc-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:10px 12px;font-size:10px;letter-spacing:.05em;color:rgba(255,255,255,.7)}
+.cover-toc-item span{display:block;font-size:8px;color:var(--yw);margin-bottom:4px;letter-spacing:.12em}
+
+/* ===== PAGE WRAPPER ===== */
+.page-section{background:var(--bgl);padding:24px 40px;border-top:3px solid var(--yw);margin-bottom:0}
+.page-section+.page-section{border-top:1px solid var(--bd)}
+.page-label{font-size:8px;letter-spacing:.2em;color:var(--yw);text-transform:uppercase;margin-bottom:4px}
+.page-title{font-size:20px;letter-spacing:.08em;color:var(--bk);margin-bottom:4px}
+.page-note{font-size:9px;color:var(--gr);margin-bottom:16px}
+
+/* ===== WIREFRAME SHELL ===== */
+.wf{background:var(--wh);border:1px solid var(--bd);max-width:860px;margin:0 auto}
+.nav{background:var(--bk);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.logo{color:var(--wh);font-size:11px;letter-spacing:.22em}
+.nl{display:flex;gap:10px;flex-wrap:wrap}
+.nl span{color:rgba(255,255,255,.6);font-size:8px;letter-spacing:.05em}
+.nl span.cur{color:var(--yw);font-weight:700}
+.ec-btn{background:var(--yw);color:var(--bk);font-size:8px;padding:4px 10px;font-weight:700;white-space:nowrap}
+
+/* ===== ELEMENTS ===== */
+.ph{background:var(--img);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 9px,var(--img2) 9px,var(--img2) 10px)}
+.ph span{position:relative;font-size:8px;color:var(--gr);background:rgba(253,252,250,.82);padding:2px 6px;z-index:1;text-align:center;line-height:1.5}
+.sec{padding:14px 20px;border-bottom:1px solid var(--bd)}
+.sec:last-child{border-bottom:none}
+.sl{font-size:7px;text-transform:uppercase;letter-spacing:.16em;color:var(--gr);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.yl{width:14px;height:2px;background:var(--yw);display:inline-block;flex-shrink:0}
+.tl{height:8px;background:var(--img);border-radius:1px;margin-bottom:4px}
+.tl.s{width:45%}.tl.m{width:72%}.tl.f{width:93%}.tl.h{height:12px;width:52%;margin-bottom:6px}
+.btn{display:inline-block;border:1px solid var(--bk);padding:4px 12px;font-size:8px;color:var(--bk);margin-top:4px}
+.btn-y{background:var(--yw);border:1px solid var(--yw);color:var(--bk);font-weight:700;padding:4px 12px;font-size:8px;display:inline-block}
+.card{background:var(--bg);border:1px solid var(--bd)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.row{display:flex}
+.tag{display:inline-block;border:1px solid var(--bd);font-size:7px;padding:1px 5px;color:var(--gr);margin-right:3px}
+.badge{display:inline-block;background:var(--yw);color:var(--bk);font-size:7px;padding:1px 5px;font-weight:700}
+.wr{font-size:7px;color:var(--gr);background:var(--bg);padding:1px 5px;border:1px solid var(--bd);display:inline-block}
+.ch{font-size:7px;color:var(--bk);background:var(--ywl);border:1px solid var(--yw);padding:1px 5px;display:inline-block;margin-left:4px}
+.pgtitle{background:var(--bg);border-bottom:1px solid var(--bd);padding:12px 20px}
+.breadcrumb{font-size:7px;color:var(--gr);margin-bottom:6px}
+.input-box{border:1px solid var(--bd);background:var(--wh);height:26px;margin-bottom:8px;width:100%}
+.textarea-box{border:1px solid var(--bd);background:var(--wh);height:55px;margin-bottom:8px;width:100%}
+.accord{border:1px solid var(--bd);margin-bottom:5px}
+.accord-h{padding:8px 12px;display:flex;justify-content:space-between;align-items:center;background:var(--wh);font-size:8px}
+.anc{display:flex;background:var(--bg);border-bottom:1px solid var(--bd);overflow-x:auto;flex-wrap:wrap}
+.ai{padding:6px 10px;font-size:7px;white-space:nowrap;border-right:1px solid var(--bd);color:var(--gr)}
+.ai.cur{background:var(--yw);color:var(--bk);font-weight:700}
+.timeline-item{display:flex;border-bottom:1px solid var(--bd)}
+.tl-year{background:var(--bk);color:var(--wh);font-size:8px;padding:10px 8px;writing-mode:vertical-rl;text-align:center;letter-spacing:.1em;min-width:28px;flex-shrink:0}
+.tl-body{padding:10px 14px;flex:1}
+.news-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bd)}
+.news-item:last-child{border-bottom:none}
+.recruit-card{border:1px solid var(--bd);overflow:hidden;margin-bottom:8px}
+.recruit-h{background:var(--bk);color:var(--wh);padding:9px 14px;font-size:9px;font-weight:500}
+.recruit-b{padding:10px 14px;background:var(--wh)}
+.yr-band{background:var(--bk);color:var(--wh);padding:2px 8px;font-size:7px;letter-spacing:.08em}
+.yr-band.yw{background:var(--yw);color:var(--bk)}
+.footer{background:var(--bk);padding:10px 20px;display:flex;justify-content:space-between;align-items:center}
+.footer-links{display:flex;gap:10px}
+.footer-links span{font-size:7px;color:rgba(255,255,255,.4)}
+
+/* ===== COMPONENT SHEET (appended at end) ===== */
+.comp-sheet{background:var(--wh);padding:32px 40px;border-top:3px solid var(--yw)}
+.comp-title{font-size:18px;letter-spacing:.08em;color:var(--bk);margin-bottom:4px}
+.comp-sub{font-size:9px;color:var(--gr);margin-bottom:28px}
+.comp-group{margin-bottom:32px}
+.comp-group-title{font-size:8px;text-transform:uppercase;letter-spacing:.18em;color:var(--yw);border-bottom:1px solid var(--yw);padding-bottom:5px;margin-bottom:16px}
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px}
+.comp-item{border:1px solid var(--bd);padding:12px;background:var(--bgl)}
+.comp-item-label{font-size:7px;text-transform:uppercase;letter-spacing:.14em;color:var(--gr);margin-bottom:8px}
+.comp-item-name{font-size:10px;font-weight:700;color:var(--bk);margin-bottom:3px}
+.comp-item-desc{font-size:8px;color:var(--gr);line-height:1.6}
+.comp-item-usage{font-size:7px;color:var(--yw);margin-top:5px}
+
+@media print{
+  body{background:white}
+  .page-section{page-break-before:always}
+  .cover{page-break-after:always}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-label">BOW PLUS KYOTO — MIMIU RENEWAL PROJECT</div>
+  <div class="cover-title">美々卯<br>サイトリニューアル<br>ワイヤーフレーム集</div>
+  <div class="cover-sub">WIREFRAME DOCUMENT v3.0 — 2026.05</div>
+  <div class="cover-meta">
+    制作：Bow plus Kyoto（竹澤）<br>
+
+  </div>
+  <div class="cover-toc">
+    <div class="cover-toc-item"><span>P.01</span>TOPページ</div>
+    <div class="cover-toc-item"><span>P.02</span>名物うどんすき</div>
+    <div class="cover-toc-item"><span>P.03</span>美々卯 折々の手紙</div>
+    <div class="cover-toc-item"><span>P.04</span>店舗・お料理</div>
+    <div class="cover-toc-item"><span>P.05</span>美々卯について</div>
+    <div class="cover-toc-item"><span>P.06</span>お知らせ</div>
+    <div class="cover-toc-item"><span>P.07</span>採用情報</div>
+    <div class="cover-toc-item"><span>P.08</span>お問い合わせ</div>
+  </div>
+</div>
+
+<!-- ===== P.01 TOP ===== -->
+<div class="page-section">
+  <div class="page-label">P.01</div>
+  <div class="page-title">TOPページ</div>
+  <div class="page-note">ヒーロービジュアル＝折々の手紙今号と連動。隔月更新のたびにヒーロー・バッジ・細帯が一括切り替え。</div>
+  <div class="wf">
+    <div class="nav">
+      <div class="logo">美々卯</div>
+      <div class="nl"><span>お知らせ</span><span>美々卯について</span><span>名物うどんすき</span><span>店舗</span><span>折々の手紙</span><span>採用</span></div>
+      <div class="ec-btn">オンラインストア</div>
+    </div>
+    <div class="ph" style="height:260px;position:relative">
+      <span>HERO — 折々の手紙 今号ビジュアルと共通素材（撮り下ろし）</span>
+      <div style="position:absolute;bottom:16px;left:18px;z-index:2">
+        <div style="font-size:7px;letter-spacing:.18em;color:rgba(255,255,255,.5);margin-bottom:3px">MIMIU</div>
+        <div style="font-size:12px;letter-spacing:.1em;color:white">━━ キャッチコピー ━━</div>
+      </div>
+      <div style="position:absolute;bottom:16px;right:18px;z-index:2;text-align:right">
+        <div style="font-size:6px;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:3px">NOW PUBLISHING</div>
+        <div style="background:rgba(28,26,23,.75);border:1px solid rgba(212,184,42,.6);padding:6px 10px;display:inline-block;text-align:left">
+          <div style="font-size:6px;letter-spacing:.1em;color:var(--yw);margin-bottom:2px">美々卯 折々の手紙 ／ 7〜8月号</div>
+          <div style="font-size:10px;color:white;font-weight:500">記憶に残る日</div>
+          <div style="font-size:7px;color:rgba(255,255,255,.5);margin-top:2px">山口繭子</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bk);padding:6px 20px;display:flex;justify-content:space-between;align-items:center">
+      <div style="font-size:7px;color:rgba(255,255,255,.45);font-style:italic">「 季節をひとつ、手紙に託して。 」</div>
+      <span style="font-size:7px;color:var(--yw)">記事を読む →</span>
+    </div>
+    <div class="sec">
+      <div class="sl"><span class="yl"></span>お知らせ</div>
+      <div class="g3">
+        <div class="card" style="padding:7px"><div class="tag">お知らせ</div><div class="tl m" style="margin-top:3px"></div><div style="font-size:7px;color:var(--gr);margin-top:2px">2026.04.22</div></div>
+        <div class="card" style="padding:7px"><div class="tag">お知らせ</div><div class="tl m" style="margin-top:3px"></div><div style="font-size:7px;color:var(--gr);margin-top:2px">2026.04.15</div></div>
+        <div class="card" style="padding:7px"><div class="tag">お知らせ</div><div class="tl m" style="margin-top:3px"></div><div style="font-size:7px;color:var(--gr);margin-top:2px">2026.04.08</div></div>
+      </div>
+    </div>
+    <div class="row" style="border-bottom:1px solid var(--bd)">
+      <div class="ph" style="flex:1.3;height:180px"><span>名物うどんすきビジュアル</span></div>
+      <div style="flex:1;padding:14px 18px;display:flex;flex-direction:column;justify-content:center">
+        <div class="sl"><span class="yl"></span>名物うどんすき</div>
+        <div class="tl h"></div><div class="tl f"></div><div class="tl m"></div><div class="tl s" style="margin-bottom:8px"></div>
+        <div class="btn">うどんすきについて →</div>
+      </div>
+    </div>
+    <div class="sec" style="text-align:center;background:var(--bg)">
+      <div class="sl" style="justify-content:center"><span class="yl"></span>美々卯について</div>
+      <div class="tl h" style="width:32%;margin:0 auto 8px"></div>
+      <div class="tl f" style="width:76%;margin:0 auto 3px"></div><div class="tl m" style="margin:0 auto 3px"></div><div class="tl s" style="margin:0 auto 10px"></div>
+      <div class="btn">美々卯について →</div>
+    </div>
+    <div class="sec">
+      <div class="sl"><span class="yl"></span>店舗・お料理</div>
+      <div class="g3" style="margin-bottom:7px">
+        <div class="card" style="overflow:hidden"><div class="ph" style="height:60px"><span>本店 megumi</span></div><div style="padding:4px 7px;font-size:7px;color:var(--gr)">大阪・南船場</div></div>
+        <div class="card" style="overflow:hidden"><div class="ph" style="height:60px"><span>なんば店</span></div><div style="padding:4px 7px;font-size:7px;color:var(--gr)">大阪・なんば</div></div>
+        <div class="card" style="display:flex;align-items:center;justify-content:center;height:76px;border:1px dashed var(--bd)"><span style="font-size:7px;color:var(--gr)">全11店舗一覧 →</span></div>
+      </div>
+      <div style="text-align:right"><div class="btn" style="margin-top:0">お料理・店舗を見る →</div></div>
+    </div>
+    <div class="sec" style="background:var(--bg)">
+      <div class="sl"><span class="yl"></span>美々卯 折々の手紙 <span class="wr">年6回 ／ 山口繭子</span></div>
+      <div class="g2">
+        <div class="card" style="overflow:hidden;border:1px solid var(--yw)">
+          <div class="ph" style="height:80px"><span>← ヒーローと同じビジュアル（7〜8月号）</span></div>
+          <div style="padding:7px 9px"><div class="badge">7〜8月 ／ 公開中</div><div style="font-size:9px;font-weight:500;margin-top:3px">記憶に残る日</div><div style="font-size:7px;color:var(--gr);margin-top:2px">山口繭子</div><div class="btn-y" style="margin-top:5px;display:block;text-align:center;font-size:7px">記事を読む →</div></div>
+        </div>
+        <div class="card" style="overflow:hidden">
+          <div class="ph" style="height:80px"><span>9〜10月号</span></div>
+          <div style="padding:7px 9px"><div class="badge" style="background:var(--img);color:var(--gr)">9〜10月 ／ 次号</div><div style="font-size:9px;font-weight:500;margin-top:3px">変わっていく</div><div style="font-size:7px;color:var(--gr);margin-top:2px">山口繭子</div><div class="btn" style="margin-top:5px;display:block;text-align:center;font-size:7px">バックナンバー →</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bk);padding:14px 20px;text-align:center">
+      <div style="font-size:7px;color:rgba(255,255,255,.4);letter-spacing:.16em;margin-bottom:5px">ONLINE STORE</div>
+      <div class="btn-y">オンラインストアへ</div>
+    </div>
+    <div class="footer">
+      <div class="logo" style="color:var(--wh);font-size:9px">美々卯</div>
+      <div class="footer-links"><span>会社概要</span><span>プライバシーポリシー</span><span>お問い合わせ</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P.02 うどんすき ===== -->
+<div class="page-section">
+  <div class="page-label">P.02</div>
+  <div class="page-title">名物うどんすき</div>
+  <div class="page-note">静的ハブ（STATIC HUB）。4,000〜5,000字 ／ 写真15〜20枚 ／ 図解1〜2点。公開後運用負荷ほぼゼロ。</div>
+  <div class="wf">
+    <div class="nav"><div class="logo">美々卯</div><div class="nl"><span class="cur">名物うどんすき</span></div><div class="ec-btn">オンラインストア</div></div>
+    <div class="anc"><div class="ai cur">① 体験の定義</div><div class="ai">② 生い立ち・歴史</div><div class="ai">③ 著名人・文献</div><div class="ai">④ こだわり：出汁</div><div class="ai">⑤ こだわり：素材・器</div><div class="ai">⑥ 食文化・大阪</div><div class="ai">⑦ 食べ方ガイド</div><div class="ai">⑧ これから</div></div>
+    <div class="ph" style="height:160px"><span>うどんすき — フルビジュアル（鍋・食卓シーン）</span></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>① 体験の定義 <span class="ch">250〜300字</span></div><div class="tl h" style="width:58%"></div><div class="tl f"></div><div class="tl m"></div><div class="tl s"></div></div>
+    <div class="row" style="border-bottom:1px solid var(--bd)">
+      <div style="flex:1;padding:12px 18px"><div class="sl"><span class="yl"></span>② 生い立ち・歴史 <span class="ch">800〜1000字</span></div><div class="tl h" style="width:62%"></div><div class="tl f"></div><div class="tl f"></div><div class="tl m"></div><div style="height:5px"></div><div class="tl f"></div><div class="tl m"></div></div>
+      <div class="ph" style="flex:0 0 130px"><span>歴史写真</span></div>
+    </div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>③ 著名人・文献エピソード <span class="ch">各200字×5〜8件</span></div><div style="display:flex;gap:6px;overflow-x:auto"><div class="card" style="min-width:95px;padding:7px;flex-shrink:0"><div class="ph" style="height:42px;margin-bottom:4px"><span>肖像</span></div><div class="tl s"></div></div><div class="card" style="min-width:95px;padding:7px;flex-shrink:0"><div class="ph" style="height:42px;margin-bottom:4px"><span>肖像</span></div><div class="tl s"></div></div><div class="card" style="min-width:95px;padding:7px;flex-shrink:0;border:1px dashed var(--bd);display:flex;align-items:center;justify-content:center"><span style="font-size:7px;color:var(--gr)">+3〜5件</span></div></div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>④ こだわり：出汁 <span class="ch">600〜800字</span></div><div class="row" style="gap:10px"><div class="ph" style="flex:0 0 110px;height:80px"><span>利尻昆布・鰹節</span></div><div style="flex:1"><div class="tl h" style="width:68%"></div><div class="tl f"></div><div class="tl m"></div></div></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>⑤ こだわり：素材・器 <span class="ch">300〜400字</span></div><div class="g3"><div class="card" style="padding:7px"><div class="ph" style="height:48px;margin-bottom:4px"><span>素材</span></div><div class="tl m"></div></div><div class="card" style="padding:7px"><div class="ph" style="height:48px;margin-bottom:4px"><span>具材</span></div><div class="tl m"></div></div><div class="card" style="padding:7px"><div class="ph" style="height:48px;margin-bottom:4px"><span>器</span></div><div class="tl m"></div></div></div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>⑥ 食文化・大阪との関係 <span class="ch">600〜800字</span></div><div class="tl h" style="width:62%"></div><div class="tl f"></div><div class="tl m"></div><div class="tl s"></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>⑦ 食べ方ガイド <span class="ch">300字＋図解</span></div><div class="row" style="gap:10px"><div class="ph" style="flex:1;height:70px"><span>STEP図解</span></div><div style="flex:1"><div class="tl m"></div><div class="tl f" style="margin-top:3px"></div><div class="btn-y" style="display:block;text-align:center;margin-top:5px;font-size:7px">EC → お取り寄せ</div></div></div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>⑧ これからのうどんすき <span class="ch">300〜400字</span></div><div class="tl h" style="width:52%"></div><div class="tl f"></div><div class="tl m"></div><div style="display:flex;gap:7px;margin-top:8px;flex-wrap:wrap"><div class="btn">店舗で体験する →</div><div class="btn-y">オンラインストア →</div><div class="btn">折々の手紙を読む →</div></div></div>
+    <div class="footer"><div class="logo" style="font-size:9px">美々卯</div><div class="footer-links"><span>会社概要</span><span>プライバシー</span><span>お問い合わせ</span></div></div>
+  </div>
+</div>
+
+<!-- ===== P.03 折々の手紙 ===== -->
+<div class="page-section">
+  <div class="page-label">P.03</div>
+  <div class="page-title">美々卯 折々の手紙</div>
+  <div class="page-note">年6回（隔月）更新。執筆：山口繭子。最終ゴール：出版。</div>
+  <div class="wf">
+    <div class="nav"><div class="logo">美々卯</div><div class="nl"><span class="cur">折々の手紙</span></div><div class="ec-btn">オンラインストア</div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>コンテンツコンセプト</div><div class="tl h" style="width:48%"></div><div class="tl f"></div><div class="tl m"></div><div style="margin-top:5px;display:flex;gap:5px;flex-wrap:wrap"><div class="wr">執筆：山口繭子</div><div class="wr">年6回（隔月）更新</div><div class="wr">最終ゴール：出版</div></div></div>
+    <div class="sec" style="background:var(--bg)">
+      <div class="sl"><span class="yl"></span>年間カレンダー（初年度）</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+        <div class="card" style="padding:7px"><div class="yr-band">1〜2月</div><div style="font-size:9px;font-weight:500;margin:4px 0 2px">あたためる</div><div style="font-size:7px;color:var(--gr)">語り手：フロアスタッフ</div><div style="font-size:7px;color:var(--gr)">EC：うどんすき鍋セット</div></div>
+        <div class="card" style="padding:7px"><div class="yr-band">3〜4月</div><div style="font-size:9px;font-weight:500;margin:4px 0 2px">信じる</div><div style="font-size:7px;color:var(--gr)">語り手：利尻島の昆布農家</div><div style="font-size:7px;color:var(--gr)">EC：だしギフト</div></div>
+        <div class="card" style="padding:7px"><div class="yr-band">5〜6月</div><div style="font-size:9px;font-weight:500;margin:4px 0 2px">手塩にかける</div><div style="font-size:7px;color:var(--gr)">語り手：料理人・megumi職人</div><div style="font-size:7px;color:var(--gr)">EC：手土産・季節の品</div></div>
+        <div class="card" style="padding:7px;border:1px solid var(--yw)"><div class="yr-band yw">7〜8月</div><div style="font-size:9px;font-weight:500;margin:4px 0 2px">記憶に残る日</div><div style="font-size:7px;color:var(--gr)">語り手：著名なお客様</div><div style="font-size:7px;color:var(--gr)">EC：夏ギフト・お中元</div><div class="badge" style="margin-top:4px;font-size:6px">ローンチ時公開</div></div>
+        <div class="card" style="padding:7px;border:1px solid var(--yw)"><div class="yr-band yw">9〜10月</div><div style="font-size:9px;font-weight:500;margin:4px 0 2px">変わっていく</div><div style="font-size:7px;color:var(--gr)">語り手：若い料理人・江口社長</div><div style="font-size:7px;color:var(--gr)">EC：季節限定商品</div><div class="badge" style="margin-top:4px;font-size:6px">ローンチ時公開</div></div>
+        <div class="card" style="padding:7px"><div class="yr-band">11〜12月</div><div style="font-size:9px;font-weight:500;margin:4px 0 2px">次のよろこびへ</div><div style="font-size:7px;color:var(--gr)">語り手：若い料理人・江口社長</div><div style="font-size:7px;color:var(--gr)">EC：年末ギフト・お歳暮</div></div>
+      </div>
+    </div>
+    <div class="sec"><div class="sl"><span class="yl"></span>記事一覧</div><div style="display:flex;gap:5px;margin-bottom:7px;flex-wrap:wrap"><div class="badge" style="font-size:7px">すべて</div><div class="tag">7〜8月</div><div class="tag">9〜10月</div></div><div class="g2"><div class="card" style="overflow:hidden"><div class="ph" style="height:85px"><span>7〜8月号ビジュアル</span></div><div style="padding:7px 9px"><div class="badge">7〜8月</div><div style="font-size:9px;font-weight:500;margin-top:3px">記憶に残る日</div><div style="font-size:7px;color:var(--gr)">山口繭子</div></div></div><div class="card" style="overflow:hidden"><div class="ph" style="height:85px"><span>9〜10月号ビジュアル</span></div><div style="padding:7px 9px"><div class="badge">9〜10月</div><div style="font-size:9px;font-weight:500;margin-top:3px">変わっていく</div><div style="font-size:7px;color:var(--gr)">山口繭子</div></div></div></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>記事詳細（イメージ）</div><div class="ph" style="height:95px;margin-bottom:8px"><span>アイキャッチ（全幅）／ メインビジュアルと連動</span></div><div class="badge">7〜8月</div><span style="font-size:7px;color:var(--gr);margin-left:5px">2026.07 ／ 山口繭子</span><div class="tl h" style="width:62%;margin:5px 0 7px"></div><div class="tl f"></div><div class="tl f" style="margin-top:3px"></div><div class="tl m" style="margin-top:3px"></div><div style="border-top:1px solid var(--bd);margin-top:10px;padding-top:7px;display:flex;justify-content:space-between"><div class="btn">← 前の記事</div><div class="btn-y">EC → 夏ギフト</div><div class="btn">次の記事 →</div></div></div>
+    <div class="footer"><div class="logo" style="font-size:9px">美々卯</div><div class="footer-links"><span>会社概要</span><span>プライバシー</span><span>お問い合わせ</span></div></div>
+  </div>
+</div>
+
+<!-- ===== P.04 店舗・お料理 ===== -->
+<div class="page-section">
+  <div class="page-label">P.04</div>
+  <div class="page-title">店舗・お料理</div>
+  <div class="page-note">扉・お料理セクション：Bow plus Kyoto設計。店舗詳細：MARS担当（カスタム投稿）。遷移デザインはすり合わせ要。</div>
+  <div class="wf">
+    <div class="nav"><div class="logo">美々卯</div><div class="nl"><span class="cur">店舗</span></div><div class="ec-btn">オンラインストア</div></div>
+    <div class="pgtitle"><div class="breadcrumb">HOME ＞ 店舗・お料理</div><div style="font-size:15px;letter-spacing:.08em">店舗・お料理</div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>美々卯のお料理</div><div class="row"><div class="ph" style="flex:0 0 150px;height:140px"><span>お料理メインビジュアル</span></div><div style="flex:1;padding:12px 16px;display:flex;flex-direction:column;justify-content:center"><div class="tl h" style="width:68%"></div><div class="tl f"></div><div class="tl m"></div><div class="tl s"></div></div></div><div class="g3" style="margin-top:8px"><div class="card" style="overflow:hidden"><div class="ph" style="height:60px"><span>うどんすき</span></div><div style="padding:5px 7px;font-size:8px;font-weight:500">うどんすき</div><div style="padding:0 7px 5px;font-size:7px;color:var(--gr)">→ 名物うどんすきへ</div></div><div class="card" style="overflow:hidden"><div class="ph" style="height:60px"><span>会席料理</span></div><div style="padding:5px 7px;font-size:8px;font-weight:500">会席料理</div><div style="padding:0 7px 5px;font-size:7px;color:var(--gr)">季節のお献立</div></div><div class="card" style="overflow:hidden"><div class="ph" style="height:60px"><span>季節のお料理</span></div><div style="padding:5px 7px;font-size:8px;font-weight:500">季節のお料理</div><div style="padding:0 7px 5px;font-size:7px;color:var(--gr)">旬の食材</div></div></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>店舗一覧 <span class="wr">11店舗 ／ MARS担当</span></div><div class="g2"><div class="card" style="display:flex;overflow:hidden"><div class="ph" style="width:75px;flex-shrink:0;height:65px"><span>写真</span></div><div style="padding:7px 10px"><div style="font-size:9px;font-weight:500;margin-bottom:2px">本店 megumi</div><div style="font-size:7px;color:var(--gr)">大阪市中央区南船場</div><div style="font-size:7px;color:var(--gr)">11:30〜22:00</div><div class="btn" style="font-size:7px;padding:2px 7px">詳細 →</div></div></div><div class="card" style="display:flex;overflow:hidden"><div class="ph" style="width:75px;flex-shrink:0;height:65px"><span>写真</span></div><div style="padding:7px 10px"><div style="font-size:9px;font-weight:500;margin-bottom:2px">なんば店</div><div style="font-size:7px;color:var(--gr)">大阪市中央区道頓堀</div><div style="font-size:7px;color:var(--gr)">11:30〜22:00</div><div class="btn" style="font-size:7px;padding:2px 7px">詳細 →</div></div></div></div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>よくある質問</div><div class="accord"><div class="accord-h"><span>ご予約はできますか？</span><span style="color:var(--gr)">+</span></div></div><div class="accord"><div class="accord-h"><span>個室のご用意はありますか？</span><span style="color:var(--gr)">+</span></div></div></div>
+    <div class="footer"><div class="logo" style="font-size:9px">美々卯</div><div class="footer-links"><span>会社概要</span><span>プライバシー</span><span>お問い合わせ</span></div></div>
+  </div>
+</div>
+
+<!-- ===== P.05 美々卯について ===== -->
+<div class="page-section">
+  <div class="page-label">P.05</div>
+  <div class="page-title">美々卯について</div>
+  <div class="page-note">社長メッセージ → MVV（the teamワークショップ成果と連動）→ 沿革 → 会社概要 → 取り組み。</div>
+  <div class="wf">
+    <div class="nav"><div class="logo">美々卯</div><div class="nl"><span class="cur">美々卯について</span></div><div class="ec-btn">オンラインストア</div></div>
+    <div class="pgtitle"><div class="breadcrumb">HOME ＞ 美々卯について</div><div style="font-size:15px;letter-spacing:.08em">美々卯について</div></div>
+    <div class="row" style="border-bottom:1px solid var(--bd)"><div style="flex:1;padding:14px 18px;display:flex;flex-direction:column;justify-content:center"><div class="sl"><span class="yl"></span>社長メッセージ</div><div class="tl h" style="width:62%"></div><div class="tl f"></div><div class="tl f"></div><div class="tl m"></div><div style="height:5px"></div><div class="tl f"></div><div class="tl m"></div><div class="tl s"></div><div style="font-size:8px;color:var(--gr);margin-top:8px">代表取締役社長　江口 ◯◯</div></div><div class="ph" style="flex:0 0 150px"><span>社長写真<br>縦位置</span></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>ミッション・ビジョン・バリュー</div><div class="g3"><div class="card" style="padding:9px;text-align:center"><div style="font-size:16px;color:var(--yw);margin-bottom:3px">◎</div><div style="font-size:8px;font-weight:700;margin-bottom:3px">ミッション</div><div class="tl m" style="margin:0 auto"></div></div><div class="card" style="padding:9px;text-align:center"><div style="font-size:16px;color:var(--yw);margin-bottom:3px">◎</div><div style="font-size:8px;font-weight:700;margin-bottom:3px">ビジョン</div><div class="tl m" style="margin:0 auto"></div></div><div class="card" style="padding:9px;text-align:center"><div style="font-size:16px;color:var(--yw);margin-bottom:3px">◎</div><div style="font-size:8px;font-weight:700;margin-bottom:3px">バリュー</div><div class="tl m" style="margin:0 auto"></div></div></div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>沿革</div><div class="timeline-item"><div class="tl-year">1925</div><div class="tl-body"><div style="font-size:8px;font-weight:600;margin-bottom:2px">耳卯楼として創業</div><div class="tl f"></div></div></div><div class="timeline-item"><div class="tl-year">1949</div><div class="tl-body"><div style="font-size:8px;font-weight:600;margin-bottom:2px">美々卯に屋号変更、うどんすき考案</div><div class="tl f"></div></div></div><div class="timeline-item" style="border-bottom:none"><div class="tl-year" style="background:var(--yw);color:var(--bk)">2025</div><div class="tl-body"><div style="font-size:8px;font-weight:600;margin-bottom:2px">創業101周年</div><div class="tl f"></div></div></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>会社概要</div><table style="width:100%;border-collapse:collapse;font-size:8px"><tr style="border-bottom:1px solid var(--bd)"><td style="padding:5px 8px 5px 0;color:var(--gr);width:28%">会社名</td><td style="padding:5px 0">株式会社美々卯</td></tr><tr style="border-bottom:1px solid var(--bd)"><td style="padding:5px 8px 5px 0;color:var(--gr)">代表者</td><td style="padding:5px 0">代表取締役社長　江口 ◯◯</td></tr><tr style="border-bottom:1px solid var(--bd)"><td style="padding:5px 8px 5px 0;color:var(--gr)">創業</td><td style="padding:5px 0">1925年（大正14年）</td></tr><tr><td style="padding:5px 8px 5px 0;color:var(--gr)">事業内容</td><td style="padding:5px 0">飲食業・食品販売業</td></tr></table></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>取り組み</div><div class="g2"><div class="card" style="padding:9px"><div class="ph" style="height:55px;margin-bottom:6px"><span>産地との関係</span></div><div style="font-size:8px;font-weight:600;margin-bottom:3px">産地・生産者との連携</div><div class="tl f"></div><div class="tl m"></div></div><div class="card" style="padding:9px"><div class="ph" style="height:55px;margin-bottom:6px"><span>食文化の継承</span></div><div style="font-size:8px;font-weight:600;margin-bottom:3px">食文化・伝統の継承</div><div class="tl f"></div><div class="tl m"></div></div></div></div>
+    <div class="footer"><div class="logo" style="font-size:9px">美々卯</div><div class="footer-links"><span>会社概要</span><span>プライバシー</span><span>お問い合わせ</span></div></div>
+  </div>
+</div>
+
+<!-- ===== P.06 お知らせ ===== -->
+<div class="page-section">
+  <div class="page-label">P.06</div>
+  <div class="page-title">お知らせ</div>
+  <div class="page-note">カテゴリーフィルター付き一覧。クライアント（美々卯）が随時更新。MARS担当（WordPress）。</div>
+  <div class="wf">
+    <div class="nav"><div class="logo">美々卯</div><div class="nl"><span class="cur">お知らせ</span></div><div class="ec-btn">オンラインストア</div></div>
+    <div class="pgtitle"><div class="breadcrumb">HOME ＞ お知らせ</div><div style="font-size:15px;letter-spacing:.08em">お知らせ</div></div>
+    <div class="sec" style="padding:9px 18px;background:var(--bg)"><div style="display:flex;gap:5px;flex-wrap:wrap"><div class="badge" style="padding:3px 9px;font-size:8px">すべて</div><div class="tag" style="padding:3px 9px;font-size:8px">お知らせ</div><div class="tag" style="padding:3px 9px;font-size:8px">プレスリリース</div><div class="tag" style="padding:3px 9px;font-size:8px">イベント・キャンペーン</div><div class="tag" style="padding:3px 9px;font-size:8px">店舗情報</div></div></div>
+    <div class="sec"><div class="news-item"><div style="font-size:8px;color:var(--gr);white-space:nowrap">2026.04.22</div><div class="tag">イベント</div><div style="flex:1"><div class="tl m" style="margin:0"></div></div></div><div class="news-item"><div style="font-size:8px;color:var(--gr);white-space:nowrap">2026.04.15</div><div class="tag">お知らせ</div><div style="flex:1"><div class="tl f" style="margin:0"></div></div></div><div class="news-item"><div style="font-size:8px;color:var(--gr);white-space:nowrap">2026.04.08</div><div class="tag">店舗情報</div><div style="flex:1"><div class="tl m" style="margin:0"></div></div></div><div class="news-item" style="border-bottom:none"><div style="font-size:8px;color:var(--gr);white-space:nowrap">2026.03.25</div><div class="tag">プレスリリース</div><div style="flex:1"><div class="tl f" style="margin:0"></div></div></div></div>
+    <div class="sec" style="text-align:center;padding:10px"><div class="btn" style="margin-top:0">もっと見る</div></div>
+    <div class="footer"><div class="logo" style="font-size:9px">美々卯</div><div class="footer-links"><span>会社概要</span><span>プライバシー</span><span>お問い合わせ</span></div></div>
+  </div>
+</div>
+
+<!-- ===== P.07 採用 ===== -->
+<div class="page-section">
+  <div class="page-label">P.07</div>
+  <div class="page-title">採用情報</div>
+  <div class="page-note">先輩の声は山口さん取材予定。リクルートPFとの外部リンク境界を要確認。</div>
+  <div class="wf">
+    <div class="nav"><div class="logo">美々卯</div><div class="nl"><span class="cur">採用</span></div><div class="ec-btn">オンラインストア</div></div>
+    <div class="pgtitle"><div class="breadcrumb">HOME ＞ 採用情報</div><div style="font-size:15px;letter-spacing:.08em">採用情報</div></div>
+    <div class="row" style="border-bottom:1px solid var(--bd)"><div class="ph" style="flex:1.2;height:160px"><span>職場・スタッフ写真</span></div><div style="flex:1;padding:14px 18px;display:flex;flex-direction:column;justify-content:center"><div class="sl"><span class="yl"></span>美々卯で働くということ</div><div class="tl h" style="width:76%"></div><div class="tl f"></div><div class="tl m"></div><div class="tl s"></div></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>募集職種</div><div class="recruit-card"><div class="recruit-h">ホールスタッフ（正社員）</div><div class="recruit-b"><div style="display:grid;grid-template-columns:70px 1fr;gap:3px 8px;font-size:7px"><span style="color:var(--gr)">勤務地</span><span>大阪府内各店舗</span><span style="color:var(--gr)">給与</span><span>月給 ◯◯万円〜</span></div><div class="btn" style="margin-top:7px;font-size:7px">詳細・エントリー → 外部リクルートPFへ</div></div></div><div class="recruit-card" style="margin-bottom:0"><div class="recruit-h">調理スタッフ（正社員）</div><div class="recruit-b"><div style="display:grid;grid-template-columns:70px 1fr;gap:3px 8px;font-size:7px"><span style="color:var(--gr)">勤務地</span><span>大阪府内各店舗</span><span style="color:var(--gr)">給与</span><span>月給 ◯◯万円〜</span></div><div class="btn" style="margin-top:7px;font-size:7px">詳細・エントリー → 外部リクルートPFへ</div></div></div></div>
+    <div class="sec"><div class="sl"><span class="yl"></span>先輩の声 <span class="wr">山口さん取材</span></div><div class="g2"><div class="card" style="overflow:hidden"><div class="ph" style="height:70px"><span>スタッフ写真</span></div><div style="padding:7px 9px"><div style="font-size:8px;font-weight:600;margin-bottom:2px">◯◯店 ホール　◯年目</div><div class="tl f"></div><div class="tl m"></div></div></div><div class="card" style="overflow:hidden"><div class="ph" style="height:70px"><span>スタッフ写真</span></div><div style="padding:7px 9px"><div style="font-size:8px;font-weight:600;margin-bottom:2px">◯◯店 調理　◯年目</div><div class="tl f"></div><div class="tl m"></div></div></div></div></div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>よくある質問</div><div class="accord"><div class="accord-h">未経験でも応募できますか？<span style="color:var(--gr)">+</span></div></div><div class="accord"><div class="accord-h">転居を伴う異動はありますか？<span style="color:var(--gr)">+</span></div></div></div>
+    <div class="footer"><div class="logo" style="font-size:9px">美々卯</div><div class="footer-links"><span>会社概要</span><span>プライバシー</span><span>お問い合わせ</span></div></div>
+  </div>
+</div>
+
+<!-- ===== P.08 お問い合わせ ===== -->
+<div class="page-section">
+  <div class="page-label">P.08</div>
+  <div class="page-title">お問い合わせ</div>
+  <div class="page-note">送信先メールアドレスをクライアントから取得要。EC問い合わせはMARS担当に振り分け。</div>
+  <div class="wf">
+    <div class="nav"><div class="logo">美々卯</div><div class="nl"><span>お問い合わせ</span></div><div class="ec-btn">オンラインストア</div></div>
+    <div class="pgtitle"><div class="breadcrumb">HOME ＞ お問い合わせ</div><div style="font-size:15px;letter-spacing:.08em">お問い合わせ</div></div>
+    <div class="sec">
+      <div style="font-size:8px;color:var(--gr);line-height:2;margin-bottom:10px">お問い合わせ前に<u>よくある質問</u>をご確認ください。店舗へのご予約は各店舗ページよりお願いします。</div>
+      <div class="sl"><span class="yl"></span>お問い合わせフォーム</div>
+      <div style="font-size:7px;color:var(--gr);margin-bottom:2px">お名前 <span style="color:#C0392B">*</span></div><div class="input-box"></div>
+      <div style="font-size:7px;color:var(--gr);margin-bottom:2px">メールアドレス <span style="color:#C0392B">*</span></div><div class="input-box"></div>
+      <div style="font-size:7px;color:var(--gr);margin-bottom:2px">お問い合わせ種別 <span style="color:#C0392B">*</span></div><div class="input-box" style="display:flex;align-items:center;padding:0 8px"><span style="font-size:7px;color:var(--gr)">選択 ▼</span></div>
+      <div style="font-size:7px;color:var(--gr);margin-bottom:2px">お問い合わせ内容 <span style="color:#C0392B">*</span></div><div class="textarea-box"></div>
+      <div style="display:flex;align-items:flex-start;gap:5px;margin-bottom:10px"><div style="width:11px;height:11px;border:1px solid var(--bd);flex-shrink:0;margin-top:1px"></div><div style="font-size:7px;color:var(--gr)"><u>プライバシーポリシー</u>に同意する</div></div>
+      <div style="text-align:center"><div class="btn-y" style="padding:7px 28px;font-size:9px">送信する</div></div>
+    </div>
+    <div class="sec" style="background:var(--bg)"><div class="sl"><span class="yl"></span>その他のお問い合わせ先</div><div style="font-size:8px;color:var(--gr);line-height:2.2"><div>ご予約・店舗 → 各店舗ページ</div><div>オンラインストア → MARS担当窓口</div><div>取材・メディア → フォームの「取材・メディア」区分</div></div></div>
+    <div class="footer"><div class="logo" style="font-size:9px">美々卯</div><div class="footer-links"><span>会社概要</span><span>プライバシー</span><span>お問い合わせ</span></div></div>
+  </div>
+</div>
+
+<!-- ===== COMPONENT SHEET ===== -->
+<div class="comp-sheet">
+  <div class="comp-title">コンポーネント一覧</div>
+  <div class="comp-sub">Figma移行時のコンポーネント設計ガイド ／ Bow plus Kyoto — 美々卯リニューアル</div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">GLOBAL — 全ページ共通</div>
+    <div class="comp-grid">
+      <div class="comp-item">
+        <div class="comp-item-label">G-01</div>
+        <div class="comp-item-name">Navigation Bar</div>
+        <div class="comp-item-desc">背景：#1C1A17。ロゴ（左）＋ナビリンク（中）＋ECボタン（右）。現在地はイエロー強調。</div>
+        <div class="comp-item-usage">全8ページで使用。Variantsで現在地を切り替え。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-02</div>
+        <div class="comp-item-name">Footer</div>
+        <div class="comp-item-desc">背景：#1C1A17。ロゴ（左）＋フッターリンク（右）＋コピーライト。</div>
+        <div class="comp-item-usage">全8ページで使用。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-03</div>
+        <div class="comp-item-name">Breadcrumb</div>
+        <div class="comp-item-desc">7px。グレー。HOME ＞ ページ名。下層ページでのみ表示。</div>
+        <div class="comp-item-usage">TOP以外の全ページ。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-04</div>
+        <div class="comp-item-name">Section Label</div>
+        <div class="comp-item-desc">イエローバー（14×2px）＋大文字ラベル（7px, letter-spacing:.16em）。各セクションの見出し。</div>
+        <div class="comp-item-usage">全ページのセクション冒頭。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-05</div>
+        <div class="comp-item-name">Button — Default</div>
+        <div class="comp-item-desc">border: 1px solid #1C1A17。背景：白。文字：9px, #1C1A17。</div>
+        <div class="comp-item-usage">各種「→ 詳細」リンク。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-06</div>
+        <div class="comp-item-name">Button — Yellow（Primary）</div>
+        <div class="comp-item-desc">背景：#D4B82A。文字：#1C1A17, font-weight:700。最重要CTAに使用。</div>
+        <div class="comp-item-usage">EC誘導、記事を読む、送信ボタン。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-07</div>
+        <div class="comp-item-name">Image Placeholder</div>
+        <div class="comp-item-desc">背景：#D9D3C7。斜線ハッチング。中央にラベルテキスト。写真が入る前の仮置き。</div>
+        <div class="comp-item-usage">全ページのビジュアルエリア。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-08</div>
+        <div class="comp-item-name">Tag</div>
+        <div class="comp-item-desc">border: 1px solid #C8C2B6。7〜8px。カテゴリー表示。</div>
+        <div class="comp-item-usage">お知らせ、折々の手紙。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">G-09</div>
+        <div class="comp-item-name">Badge — Yellow</div>
+        <div class="comp-item-desc">背景：#D4B82A。文字：#1C1A17, font-weight:700, 7〜8px。強調ラベル。</div>
+        <div class="comp-item-usage">折々の手紙の号数、ローンチ時公開表示。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">TOP — トップページ専用</div>
+    <div class="comp-grid">
+      <div class="comp-item">
+        <div class="comp-item-label">T-01</div>
+        <div class="comp-item-name">Hero — Letter Linked</div>
+        <div class="comp-item-desc">フルビジュアル。左下：キャッチコピー。右下：折々の手紙バッジ（号数・タイトル・著者）。隔月で一括切り替え。</div>
+        <div class="comp-item-usage">TOPのみ。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">T-02</div>
+        <div class="comp-item-name">Hero Sub-band</div>
+        <div class="comp-item-desc">背景：#1C1A17。左：今号の引用一文（斜体、グレー）。右：「記事を読む →」リンク（イエロー）。</div>
+        <div class="comp-item-usage">TOPのみ。Heroの直下に配置。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">T-03</div>
+        <div class="comp-item-name">News Card — Small</div>
+        <div class="comp-item-desc">背景：#F0EBE0。カテゴリータグ＋タイトル＋日付。横3列グリッド。</div>
+        <div class="comp-item-usage">TOPのお知らせセクション（3件）。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">T-04</div>
+        <div class="comp-item-name">Feature Block — Udon</div>
+        <div class="comp-item-desc">左：写真（flex:1.3）。右：ラベル＋テキスト＋ボタン。2カラムレイアウト。</div>
+        <div class="comp-item-usage">TOPの名物うどんすきフィーチャー。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">T-05</div>
+        <div class="comp-item-name">EC Banner</div>
+        <div class="comp-item-desc">背景：#1C1A17。中央にラベル＋テキスト＋Yellowボタン。</div>
+        <div class="comp-item-usage">TOPのEC誘導帯。フッター直上。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">CONTENT — コンテンツページ共通</div>
+    <div class="comp-grid">
+      <div class="comp-item">
+        <div class="comp-item-label">C-01</div>
+        <div class="comp-item-name">Anchor Navigation</div>
+        <div class="comp-item-desc">背景：#F0EBE0。横スクロール対応。現在地：Yellowハイライト。</div>
+        <div class="comp-item-usage">名物うどんすき（8セクション）。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-02</div>
+        <div class="comp-item-name">Letter Card — Current</div>
+        <div class="comp-item-desc">border: 1px solid #D4B82A。サムネイル＋Yellowバッジ（公開中）＋タイトル＋著者＋Yellowボタン。</div>
+        <div class="comp-item-usage">TOP折々の手紙セクション（今号）。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-03</div>
+        <div class="comp-item-name">Letter Card — Archive</div>
+        <div class="comp-item-desc">通常枠。サムネイル＋グレーバッジ（次号 or バックナンバー）＋タイトル＋著者＋Defaultボタン。</div>
+        <div class="comp-item-usage">TOP折々の手紙（次号）、折々の手紙一覧。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-04</div>
+        <div class="comp-item-name">Calendar Card</div>
+        <div class="comp-item-desc">Year Band（黒 or 黄）＋タイトル＋語り手＋EC接続商品。ローンチ時は黄枠＋Badgeを追加。</div>
+        <div class="comp-item-usage">折々の手紙 年間カレンダー。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-05</div>
+        <div class="comp-item-name">Store Card</div>
+        <div class="comp-item-desc">横並び：写真（75px）＋店名・住所・時間・詳細ボタン。</div>
+        <div class="comp-item-usage">店舗一覧、TOP店舗セクション。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-06</div>
+        <div class="comp-item-name">Dish Card</div>
+        <div class="comp-item-desc">縦：写真＋料理名＋リンクテキスト。3カラムグリッド。</div>
+        <div class="comp-item-usage">店舗ページ お料理セクション。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-07</div>
+        <div class="comp-item-name">Timeline Item</div>
+        <div class="comp-item-desc">左：Year Band（縦書き）。右：タイトル＋テキスト。特定年はYellowバンド。</div>
+        <div class="comp-item-usage">美々卯について 沿革。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-08</div>
+        <div class="comp-item-name">Accordion</div>
+        <div class="comp-item-desc">ヘッダー（質問＋±アイコン）＋本文エリア（展開時）。border: 1px solid #C8C2B6。</div>
+        <div class="comp-item-usage">店舗FAQ、採用FAQ。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-09</div>
+        <div class="comp-item-name">Recruit Card</div>
+        <div class="comp-item-desc">ヘッダー（黒背景、職種名）＋ボディ（詳細グリッド＋ボタン）。</div>
+        <div class="comp-item-usage">採用情報 募集職種。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-10</div>
+        <div class="comp-item-name">Form — Input / Textarea</div>
+        <div class="comp-item-desc">border: 1px solid #C8C2B6。背景：白。ラベル（7px, グレー）＋必須マーク（赤）。</div>
+        <div class="comp-item-usage">お問い合わせフォーム。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-11</div>
+        <div class="comp-item-name">News List Item</div>
+        <div class="comp-item-desc">横並び：日付（グレー）＋タグ＋タイトルライン。下線ボーダーで区切り。</div>
+        <div class="comp-item-usage">お知らせ一覧。</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">C-12</div>
+        <div class="comp-item-name">Page Title Block</div>
+        <div class="comp-item-desc">背景：#F0EBE0。パンくずリスト＋ページタイトル（15px）。</div>
+        <div class="comp-item-usage">TOP以外の全ページ最上部。</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding:14px;background:var(--ywl);border:1px solid var(--yw);font-size:8px;color:#6A4E10;line-height:1.8">
+    <strong>Figma移行の推奨作業順序</strong><br>
+    STEP 1 ： G-01〜G-09（グローバルコンポーネント）をまず作成・ライブラリ登録<br>
+    STEP 2 ： T-01〜T-05（TOP専用）を作成し、TOPページフレームを完成<br>
+    STEP 3 ： C-01〜C-12（コンテンツ共通）を作成し、各ページフレームを順次完成<br>
+    STEP 4 ： MARSさんにFigmaのURLを共有。コメント機能でフィードバックを収集<br>
+    <br>
+    <strong>カラートークン（Figma Styles として登録推奨）</strong><br>
+    color/black: #1C1A17 ／ color/beige: #F0EBE0 ／ color/beige-light: #FAF7F2 ／ color/yellow: #D4B82A ／ color/yellow-light: #F5EBC0 ／ color/gray: #8A8580 ／ color/border: #C8C2B6 ／ color/white: #FDFCFA
+  </div>
+</div>
+
+</body>
+</html>
